@@ -8,6 +8,51 @@ __barnowl-noble__ collects data from ambient Bluetooth Low Energy devices using 
 __barnowl-noble__ is a lightweight [Node.js package](https://www.npmjs.com/package/barnowl-noble) that can run on resource-constrained edge devices.  It can [forward data](#pareto-anywhere-integration) to reelyActive's [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/) open source middleware suite, and can just as easily be run standalone behind a [barnowl](https://github.com/reelyactive/barnowl) instance, as detailed in the code examples below.
 
 
+Pareto Anywhere Integration
+---------------------------
+
+A common application of __barnowl-noble__ is to collect Bluetooth Low Energy device data for [pareto-anywhere](https://github.com/reelyactive/pareto-anywhere) using an onboard BLE radio or adapter.  Simply follow our [Create a Pareto Anywhere startup script](https://reelyactive.github.io/diy/pareto-anywhere-startup-script/) tutorial using the script below:
+
+```javascript
+#!/usr/bin/env node
+
+const ParetoAnywhere = require('../lib/paretoanywhere.js');
+
+// Edit the options to customise the server
+const BARNOWL_NOBLE_OPTIONS = {};
+
+// ----- Exit gracefully if the optional dependency is not found -----
+let BarnowlNoble;
+try {
+  BarnowlNoble = require('barnowl-noble');
+}
+catch(err) {
+  console.log('This script requires barnowl-noble.  Install with:');
+  console.log('\r\n    "npm install barnowl-noble"\r\n');
+  return console.log('and then run this script again.');
+}
+// -------------------------------------------------------------------
+
+let pa = new ParetoAnywhere();
+pa.barnowl.addListener(BarnowlNoble, {},
+                       BarnowlNoble.DefaultListener, BARNOWL_NOBLE_OPTIONS);
+```
+
+### Alternative Integration
+
+__barnowl-noble__ also includes a script to forward data to a local [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/) instance as UDP raddecs with target localhost:50001.  Start this script with the command:
+
+    npm run forwarder
+
+To instead forward UDP raddecs to a _remote_ Pareto Anywhere instance, start this script with the command:
+
+    npm run forwarder xxx.xxx.xxx.xxx
+
+where xxx.xxx.xxx.xxx is the IP address of the remote instance.
+
+__Note:__ Any GATT data collected by __barnowl-noble__ will be lost using this approach as `protocolSpecificData` is _not_ currently supported in UDP-encoded raddecs.
+
+
 Quick Start
 -----------
 
@@ -20,18 +65,14 @@ Then from the root folder run at any time:
 If you observe a permissions error (ex: EPERM), either [assign the necessary privileges](#assigning-privileges) (recommended) or run as root (_not_ recommended).  __barnowl-node__ will set the local Bluetooth radio to scan and print any processed [raddec](https://github.com/reelyactive/raddec) data to the console.
 
 
-Pareto Anywhere Integration
----------------------------
+Supported Services and Peripheral Devices
+-----------------------------------------
 
-__barnowl-noble__ includes a script to forward data to a local [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/) instance as UDP raddecs with target localhost:50001.  Start this script with the command:
+__barnowl-noble__ supports the following Bluetooth services and peripheral devices:
 
-    npm run forwarder
-
-To instead forward UDP raddecs to a _remote_ Pareto Anywhere instance, start this script with the command:
-
-    npm run forwarder xxx.xxx.xxx.xxx
-
-where xxx.xxx.xxx.xxx is the IP address of the remote instance.
+| Service UUID                         | Peripheral devices  |
+|:-------------------------------------|:--------------------|
+| 1c930001-d459-11e7-9296-b8e856369374 | Sensor-Works BluVib |
 
 
 Assigning Privileges
