@@ -1,11 +1,25 @@
 barnowl-noble
 =============
 
-__barnowl-noble__ collects data from ambient Bluetooth Low Energy devices using the noble BLE central module for Node.js, transforming it into standard developer-friendly JSON that is vendor/technology/application-agnostic.
+__barnowl-noble__ collects data from ambient Bluetooth Low Energy devices using the noble BLE _Central_ module for Node.js, transforming it into standard developer-friendly JSON that is vendor/technology/application-agnostic.
 
 ![Overview of barnowl-noble](https://reelyactive.github.io/barnowl-noble/images/overview.png)
 
 __barnowl-noble__ is a lightweight [Node.js package](https://www.npmjs.com/package/barnowl-noble) that can run on resource-constrained edge devices.  It can [forward data](#pareto-anywhere-integration) to reelyActive's [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/) open source middleware suite, and can just as easily be run standalone behind a [barnowl](https://github.com/reelyactive/barnowl) instance, as detailed in the code examples below.
+
+
+barnowl-noble vs. barnowl-hci
+-----------------------------
+
+__barnowl-noble__ and [barnowl-hci](https://github.com/reelyactive/barnowl-hci) are similar in functionality in that they both collect ambient Blutooth Low Energy data, however each implements a different _role_:
+- __barnowl-noble__ implements the _Central_ role
+- __barnowl-hci__ implements the _Observer_ role
+
+Use __barnowl-noble__ when data must be collected by connecting to peripherals and interacting with their characteristics (see [Supported Services and Peripheral Devices](#supported-services-and-peripheral-devices) below).
+
+Use __barnowl-hci__ when data is to be collected from advertising packets alone.
+
+Do not use __barnowl-noble__ and __barnowl-hci__ on the same Bluetooth adapter simultaneously.
 
 
 Pareto Anywhere Integration
