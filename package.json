@@ -22,7 +22,8 @@
   "scripts": {
     "start": "node bin/barnowl-noble",
     "forwarder": "node bin/barnowl-noble-forwarder",
-    "privileges": "node bin/barnowl-noble-privileges"
+    "privileges": "node bin/barnowl-noble-privileges",
+    "gatt": "node bin/barnowl-noble-gatt"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,7 @@
   "dependencies": {
     "@stoprocent/noble": "^1.18.2",
     "advlib-identifier": ">=0.1.0",
-    "raddec": ">=0.6.0"
+    "raddec": ">=0.6.1"
   },
   "bugs": {
     "url": "https://github.com/reelyactive/barnowl-noble/issues"
