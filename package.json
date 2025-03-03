@@ -14,7 +14,7 @@
     "noble",
     "raddec"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -30,7 +30,7 @@
     "url": "https://github.com/reelyactive/barnowl-noble.git"
   },
   "dependencies": {
-    "@stoprocent/noble": "^1.18.2",
+    "@stoprocent/noble": "^1.19.1",
     "advlib-identifier": ">=0.1.0",
     "raddec": ">=0.6.1"
   },
