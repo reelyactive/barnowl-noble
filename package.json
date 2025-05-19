@@ -16,7 +16,7 @@
   ],
   "version": "1.0.3",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "main": "./lib/barnowlnoble.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "url": "https://github.com/reelyactive/barnowl-noble.git"
   },
   "dependencies": {
-    "@stoprocent/noble": "^1.19.1",
+    "@stoprocent/noble": "^2.3.0",
     "advlib-identifier": ">=0.1.0",
     "raddec": ">=0.6.1"
   },
