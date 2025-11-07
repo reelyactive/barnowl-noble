@@ -89,6 +89,18 @@ __barnowl-noble__ supports the following Bluetooth services and peripheral devic
 | 1c930001-d459-11e7-9296-b8e856369374 | Sensor-Works BluVib |
 
 
+Supported BLE Hardware
+----------------------
+
+__barnowl-noble__ nominally supports any Bluetooth Low Energy device supported by [noble](https://www.npmjs.com/package/@stoprocent/noble).  This includes the onboard BLE radio of many computers such as the Raspberry Pi, modern laptops, etc.  However, _shared_ BLE radios, such as onboard variants, are subject to other processes leveraging their functionality, potentially impacting performance and/or reliability.
+
+For always-on/high-availability applications, the use of a dedicated BLE radio, such as a USB dongle, is recommended.  The following devices have been validated with __barnowl-noble__:
+
+| Model | Make     | Type                                                     |
+|:------|:---------|:---------------------------------------------------------|
+| BP119 | Feasycom | USB BLE 4.0 adapter (HCI), external antenna, CSR8510A10 chipset |
+
+
 Assigning Privileges
 --------------------
 
