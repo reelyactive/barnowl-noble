@@ -30,9 +30,9 @@
     "url": "https://github.com/reelyactive/barnowl-noble.git"
   },
   "dependencies": {
-    "@stoprocent/noble": "^2.3.8",
+    "@stoprocent/noble": "^2.3.17",
     "advlib-identifier": ">=0.1.0",
-    "raddec": ">=0.6.1"
+    "raddec": ">=0.6.2"
   },
   "bugs": {
     "url": "https://github.com/reelyactive/barnowl-noble/issues"
